@@ -1,10 +1,13 @@
-function! Whitewash()
-  %s/\v(\s|)*$//
+command! Whitewash call <sid>whitewash()
+
+function! s:whitewash()
+  %s/\v(\s|
+)*$//
   retab
   ''
 endfunction
 
-autocmd FileWritePre * :call Whitewash()
-autocmd FileAppendPre * :call Whitewash()
-autocmd FilterWritePre * :call Whitewash()
-autocmd BufWritePre * :call Whitewash()
+autocmd FileWritePre * :Whitewash
+autocmd FileAppendPre * :Whitewash
+autocmd FilterWritePre * :Whitewash
+autocmd BufWritePre * :Whitewash
